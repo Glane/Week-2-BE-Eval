@@ -1,6 +1,8 @@
 require 'rubygems'
 require 'bundler/setup'
 require 'rspec'
+require 'pry'
+
 require_relative '../tennis'
 
 describe Tennis::Game do
@@ -11,9 +13,10 @@ describe Tennis::Game do
       expect(game.player1).to be_a(Tennis::Player)
       expect(game.player2).to be_a(Tennis::Player)
     end
-
-    it 'sets the opponent for each player'
+    it 'sets the opponent for each player' do
+    end
   end
+    
 
   describe '#wins_ball' do
     it 'increments the points of the winning player' do
@@ -31,6 +34,7 @@ describe Tennis::Player do
 
     return player
   end
+
 
   describe '.initialize' do
     it 'sets the points to 0' do
@@ -52,7 +56,7 @@ describe Tennis::Player do
         expect(player.score).to eq('love')
       end
     end
-    
+
     context 'when points is 1' do
       it 'returns fifteen' do
         player.points = 1
@@ -62,11 +66,15 @@ describe Tennis::Player do
     end
     
     context 'when points is 2' do
-      it 'returns thirty'  
+      it 'returns thirty' do
+        
+      end 
     end
     
     context 'when points is 3' do
-      it 'returns forty' 
+      it 'returns forty' do
+        
+      end
     end
   end
 end
