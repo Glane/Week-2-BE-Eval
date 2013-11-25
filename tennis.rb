@@ -8,7 +8,6 @@ module Tennis
 
       @player1.opponent = @player2
       @player2.opponent = @player1
-
     end
 
     # Records a win for a ball in a game.
@@ -24,14 +23,40 @@ module Tennis
       elsif winner == 2
         @player2.points = @player2.points + 1
       end
-    end    
-  end
+    end 
+
+    def game_score
+      if (@player1.points == @player2.points) && (@player2.points > 2)
+        return "duece"
+      
+      elsif (@player1.points == @player2.points + 1) && (@player1.points >3)
+        return "advantage player 1"      
+
+      elsif (@player2.points == @player1.points + 1) && (@player2.points >3)
+        return "advantage player 2"
+
+      elsif (@player1.points == @player2.points + 2) && (@player1.points >3)
+        return "player 1 wins !"      
+
+      elsif (@player2.points == @player1.points + 2) && (@player2.points >3)
+        return "player 2 wins !"
+
+      else 
+        return "the score is #{@player1.score} to #{@player2.score}"
+      end  
+    end
+  end 
+
+    
+  
+
 
   class Player
     attr_accessor :points, :opponent
 
     def initialize
       @points = 0
+      @opponent = nil
     end
 
     # Increments the score by 1.
@@ -46,7 +71,8 @@ module Tennis
       return 'love' if @points == 0
       return 'fifteen' if @points == 1
       return 'thirty' if @points == 2
-      return 'fourty' if @points == 3
+      return 'fourty' if (@points == 3)
     end
   end
 end
+
