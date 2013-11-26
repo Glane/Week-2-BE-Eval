@@ -29,50 +29,50 @@ describe Tennis::Game do
   describe '#game_score' do 
     context 'when score is tied above 2' do
       it 'returns duece' do
-        @player1.points = 4
-        @player2.points = 4
-        (game_score).to eq ("duece")
+        game.player1.points = 4
+        game.player2.points = 4
+        expect(game.game_score).to eq ("duece")
       end
     end
 
     context 'when score is advantage player1' do
       it 'returns advantage player 1' do
-        @player1.points = 4
-        @player2.points = 3
-        (game_score).to eq ("advantage player 1")
+        game.player1.points = 4
+        game.player2.points = 3
+        expect(game.game_score).to eq ("advantage player 1")
       end
     end
 
     context 'when score is advantage player2' do
       it 'returns advantage player 2' do
-        @player1.points = 4
-        @player2.points = 5
-        (game_score).to eq ("advantage player 2")
+        game.player1.points = 4
+        game.player2.points = 5
+        expect(game.game_score).to eq ("advantage player 2")
       end
     end
 
     context 'when score is above 3 and player 1 wins by 2' do
       it 'returns player 1 wins !' do
-        @player1.points = 4
-        @player2.points = 2
-        (game_score).to eq ("player 1 wins !")
+        game.player1.points = 4
+        game.player2.points = 2
+        expect(game.game_score).to eq ("player 1 wins !")
       end
     end
 
 
     context 'when score is above 3 and player 2 wins by 2' do
       it 'returns player 2 wins !' do
-        @player1.points = 3
-        @player2.points = 5
-        (game_score).to eq ("player 2 wins !")
+        game.player1.points = 3
+        game.player2.points = 5
+        expect(game.game_score).to eq ("player 2 wins !")
       end
     end
 
     context 'when score has not yet reached duece or win' do
       it 'the score is #{@player1.score"} to #{@player2.score}' do
-        @player1.score = 'love'
-        @player2.score = 'thirty'
-        (game_score).to eq ("the score is 'love' to 'thirty'")
+        game.player1.points = 0
+        game.player2.points = 2 
+        expect(game.game_score).to eq ("the score is love to thirty")
       end
     end
   end
@@ -127,13 +127,5 @@ describe Tennis::Player do
         expect(player.score).to eq('fourty')
       end
     end
-
-    context 'score of 40-40' do
-      it 'returns duece' do 
-        player1.points = 4
-        player2.points = 4
-        expect(player.score).to eq("duece")
-      end 
-    end 
   end
 end

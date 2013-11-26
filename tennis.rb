@@ -71,7 +71,7 @@ module Tennis
       return 'love' if @points == 0
       return 'fifteen' if @points == 1
       return 'thirty' if @points == 2
-      return 'fourty' if (@points == 3)
+      return 'fourty' if @points == 3
     end
   end
 end
